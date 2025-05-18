@@ -1,0 +1,1 @@
+(()=>{var r={252:r=>{"use strict";r.exports=require("express")},577:r=>{"use strict";r.exports=require("cors")}},e={};function s(o){var t=e[o];if(void 0!==t)return t.exports;var n=e[o]={exports:{}};return r[o](n,n.exports,s),n.exports}const o=s(252),t=s(577),n=o();n.use(t()),n.use(o.json()),n.listen(3e3,(()=>{console.log("Server is running on port 3000")}))})();

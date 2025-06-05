@@ -1,14 +1,18 @@
 
 const { Pool } = require('pg');
+const dotenv = require('dotenv');
+dotenv.config();
   
 class DatbaseConfig {
     constructor() {
-        this.connectionString = process.env.DB_CONNECTION_STRING
+        this.connectionString = process.env.DATABASE_URL
+
     }
 
     getConnectionPool() {
         const pool = new Pool({
-            connectionString: this.connectionString
+            connectionString: this.connectionString,
+            ssl: false
         })
         pool.connect()
             .then(client => {

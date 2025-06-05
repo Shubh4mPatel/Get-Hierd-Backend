@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   AuthenticationMiddleware.authenticate(req, res, next);
 })
 // Routes
-app.all('*', (req, res, next) => {
+app.all('*name', (req, res, next) => {
   const error = new AppError('This route is not defined!', 404);
   next(error);
 });

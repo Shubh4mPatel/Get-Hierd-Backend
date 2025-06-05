@@ -1,4 +1,4 @@
-const appError = require('../utils/appError');
+const appError = require('../utils/errorHandler');
 const jwt = require('jsonwebtoken');
 
 class Token {

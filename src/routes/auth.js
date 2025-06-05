@@ -1,37 +1,13 @@
-const Authentication = require('../service/authentication');
+const authService = require('../services/authentication');
 const express = require('express');
 const router = express.Router();  
-const authService = new Authentication();
 
 
-router.post('/register', async (req, res, next) => {       
-    try {
-        await authService.register(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
 
-router.post('/login', async (req, res, next) => {
-    try {
-        await authService.login(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-}); 
+router.post('/auth',authService.register(req, res, next));
+router.post('/login', authService.login(req, res, next));
+router.post('/refresh', authService.refresh(req, res, next));   
+router.post('/logout', authService.logout(req, res, next));
 
-router.post('/refresh', async (req, res, next) => {
-    try {
-        await authService.refresh(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
 
-router.post('/logout', async (req, res, next) => {
-    try {
-        await authService.logout(req, res, next);
-    } catch (error) {
-        next(error);
-    }
-});
+module.exports = router;

@@ -35,7 +35,6 @@ class Authentication {
 
   }
 
-
   async refresh(req, res, next) {
     const { refreshToken } = req.cookies;
 
@@ -139,4 +138,4 @@ class Authentication {
   }
 }
 
-module.exports = Authentication;
+module.exports =  new Authentication;

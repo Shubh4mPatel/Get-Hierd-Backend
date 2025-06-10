@@ -60,7 +60,7 @@ const headerValidator = {
 
     getRefreshToken: async (req, res, next) => {
         try {
-            const refreshToken = req.headers['refresh-token'] || "";
+            const refreshToken = req.cookies.refreshToken;
             if (refreshToken === "") {
                 return headerValidator.sendResponse(res, 401, "MISSING_REFRESH_TOKEN", null);
             }

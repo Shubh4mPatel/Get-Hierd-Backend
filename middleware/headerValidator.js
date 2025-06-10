@@ -38,7 +38,7 @@ const headerValidator = {
             if (authToken != "") {
                 const token = authToken.split(" ")[1];
                 if (token) {
-                    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+                    jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
                         if (err) {
                             return headerValidator.sendResponse(res, 401, "INVALID_AUTH_TOKEN", null);
                         }
@@ -69,7 +69,7 @@ const headerValidator = {
                 return headerValidator.sendResponse(res, 401, "REFRESH_TOKEN_NOT_FOUND", null);
             }
             if (refreshToken == userRefreshToken.refreshToken) {
-                jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
+                jwt.verify(refreshToken, process.env.JWT_SECRET_KEY, (err, decoded) => {
                     if (err) {
                         return headerValidator.sendResponse(res, 401, "INVALID_REFRESH_TOKEN", null);
                     }

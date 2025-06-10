@@ -57,7 +57,7 @@ const headerValidator = {
         }
 
     },
-    
+
     getRefreshToken: async (req, res, next) => {
         try {
             const refreshToken = req.headers['refresh-token'] || "";
@@ -66,7 +66,7 @@ const headerValidator = {
             }
             const { rows: userRefreshToken } = await db.query("SELECT * FROM users WHERE refresh_token = $1", [refreshToken]);
             if (userRefreshToken.length === 0) {
-                return headerValidator.sendResponse(res, 401, "REFRESH_TOEKN_NOT_FOUND", null);
+                return headerValidator.sendResponse(res, 401, "REFRESH_TOKEN_NOT_FOUND", null);
             }
             if (refreshToken == userRefreshToken.refreshToken) {
                 jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
